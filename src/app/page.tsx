@@ -1,65 +1,85 @@
-import Image from "next/image";
+'use client';
+
+import React, { useState } from 'react';
+import { motion, useScroll, useTransform } from 'framer-motion';
+import CustomCursor from '@/components/ui/CustomCursor';
+import RajasthaniBorder from '@/components/ui/RajasthaniBorder';
+import Navbar from '@/components/layout/Navbar';
+import Footer from '@/components/layout/Footer';
+import Hero from '@/components/sections/Hero';
+import About from '@/components/sections/About';
+import Skills from '@/components/sections/Skills';
+import Projects from '@/components/sections/Projects';
+import AILab from '@/components/sections/AILab';
+import Vision from '@/components/sections/Vision';
+import Contact from '@/components/sections/Contact';
+import IntroVideo from '@/components/IntroVideo';
+import DayNightCycle from '@/components/DayNightCycle';
+import SectionSlide from '@/components/SectionSlide';
 
 export default function Home() {
+  const [introComplete, setIntroComplete] = useState(false);
+  const { scrollYProgress } = useScroll();
+  const scaleX = useTransform(scrollYProgress, [0, 1], [0, 1]);
+
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
+    <>
+      <CustomCursor />
+
+      {/* Rajasthani Decorative Border — fixed at top */}
+      <RajasthaniBorder />
+
+      {/* Scroll Progress */}
+      <motion.div className="scroll-progress" style={{ scaleX }} />
+
+      {/* Intro Video Overlay */}
+      {!introComplete && (
+        <IntroVideo onComplete={() => setIntroComplete(true)} />
+      )}
+
+      {/* Main Content */}
+      <Navbar />
+      
+      <div style={{ position: 'relative' }}>
+        {/* Fixed background layer for the entire 24hr cycle */}
+        <DayNightCycle scrollProgress={scrollYProgress} />
+        
+        {/* Scrollable sections */}
+        <main style={{ position: 'relative', zIndex: 10 }}>
+          <SectionSlide scrollProgress={scrollYProgress} range={[0, 0.14]} id="hero" isFirst={true}>
+            <Hero scrollProgress={scrollYProgress} />
+          </SectionSlide>
+          
+          <SectionSlide scrollProgress={scrollYProgress} range={[0.14, 0.28]} id="about">
+            <About scrollProgress={scrollYProgress} />
+          </SectionSlide>
+          
+          <SectionSlide scrollProgress={scrollYProgress} range={[0.28, 0.42]} id="skills">
+            <Skills scrollProgress={scrollYProgress} />
+          </SectionSlide>
+          
+          <SectionSlide scrollProgress={scrollYProgress} range={[0.42, 0.57]} id="projects">
+            <Projects scrollProgress={scrollYProgress} />
+          </SectionSlide>
+          
+          <SectionSlide scrollProgress={scrollYProgress} range={[0.57, 0.71]} id="lab">
+            <AILab scrollProgress={scrollYProgress} />
+          </SectionSlide>
+          
+          <SectionSlide scrollProgress={scrollYProgress} range={[0.71, 0.85]} id="vision">
+            <Vision scrollProgress={scrollYProgress} />
+          </SectionSlide>
+          
+          <SectionSlide scrollProgress={scrollYProgress} range={[0.85, 1.0]} id="contact">
+            <Contact scrollProgress={scrollYProgress} />
+          </SectionSlide>
+        </main>
+        
+        {/* Ensure footer appears at the very end and sits above the background */}
+        <div style={{ position: 'relative', zIndex: 20 }}>
+          <Footer />
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
-    </div>
+      </div>
+    </>
   );
 }
