@@ -1,0 +1,8 @@
+services:
+  - type: static
+    name: dreamers-code-portfolio
+    env: static
+    buildCommand: npm install && npm run build
+    staticPublishPath: out
+    # Auto-deploy when changes are pushed to the main branch
+    autoDeploy: true
