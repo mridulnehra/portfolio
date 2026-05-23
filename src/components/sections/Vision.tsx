@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import { motion, MotionValue } from 'framer-motion';
+import { motion } from 'framer-motion';
 import FloatingElement from '@/components/animations/FloatingElement';
 import { visionNotes } from '@/lib/constants';
 
@@ -13,11 +13,7 @@ const noteStyleMap: Record<string, string> = {
   'notebook': 'note-notebook-night',
 };
 
-interface VisionProps {
-  scrollProgress?: MotionValue<number>;
-}
-
-export default function Vision({ scrollProgress }: VisionProps) {
+export default function Vision() {
   return (
     <section
       id="vision"
@@ -27,7 +23,7 @@ export default function Vision({ scrollProgress }: VisionProps) {
       }}
     >
       {/* Hot air balloon */}
-      <svg style={{ position: 'absolute', right: '12%', top: '8%', opacity: 0.15 }} width="60" height="100" viewBox="0 0 60 100">
+      <svg aria-hidden="true" style={{ position: 'absolute', right: '12%', top: '8%', opacity: 0.15 }} width="60" height="100" viewBox="0 0 60 100">
         {/* Balloon */}
         <ellipse cx="30" cy="30" rx="25" ry="28" fill="var(--color-accent-red)" />
         <path d="M5 30 Q30 35 55 30 Q45 55 30 60 Q15 55 5 30" fill="var(--color-accent-saffron)" />
@@ -44,7 +40,7 @@ export default function Vision({ scrollProgress }: VisionProps) {
       </svg>
 
       {/* Paisley — left */}
-      <svg style={{ position: 'absolute', left: 30, bottom: '30%', opacity: 0.06, transform: 'rotate(-15deg)' }} width="70" height="100" viewBox="0 0 70 100">
+      <svg aria-hidden="true" style={{ position: 'absolute', left: 30, bottom: '30%', opacity: 0.06, transform: 'rotate(-15deg)' }} width="70" height="100" viewBox="0 0 70 100">
         <path d="M35 5 Q60 25 52 55 Q45 80 35 95 Q25 80 18 55 Q10 25 35 5Z" fill="var(--color-accent-teal)" />
         <path d="M35 20 Q48 32 44 52 Q40 70 35 78 Q30 70 26 52 Q22 32 35 20Z" fill="var(--color-accent-gold)" />
         <circle cx="35" cy="45" r="5" fill="white" opacity="0.5" />

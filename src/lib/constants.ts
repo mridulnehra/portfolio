@@ -11,12 +11,12 @@ export const SITE_CONFIG = {
 export const skills: Skill[] = [
   { name: 'Python', icon: '🐍', x: 20, y: 30, description: 'My first love in programming' },
   { name: 'Machine Learning', icon: '🧠', x: 50, y: 15, description: 'Teaching machines to think' },
-  { name: 'React', icon: '⚛️', x: 75, y: 35, description: 'Building UIs that spark joy' },
-  { name: 'Next.js', icon: '▲', x: 60, y: 60, description: 'Full-stack React framework' },
-  { name: 'AI / LLMs', icon: '🤖', x: 30, y: 65, description: 'The future is conversational' },
-  { name: 'Problem Solving', icon: '💡', x: 80, y: 70, description: 'Turning puzzles into products' },
-  { name: 'TypeScript', icon: '📘', x: 15, y: 55, description: 'JavaScript but make it safe' },
-  { name: 'Node.js', icon: '🟢', x: 45, y: 80, description: 'Server-side everything' },
+  { name: 'React', icon: '⚛️', x: 80, y: 30, description: 'Building UIs that spark joy' },
+  { name: 'Next.js', icon: '▲', x: 85, y: 60, description: 'Full-stack React framework' },
+  { name: 'AI / LLMs', icon: '🤖', x: 15, y: 60, description: 'The future is conversational' },
+  { name: 'Problem Solving', icon: '💡', x: 65, y: 85, description: 'Turning puzzles into products' },
+  { name: 'TypeScript', icon: '📘', x: 35, y: 85, description: 'JavaScript but make it safe' },
+  { name: 'Node.js', icon: '🟢', x: 50, y: 90, description: 'Server-side everything' },
 ];
 
 export const skillConnections: [number, number][] = [
@@ -95,7 +95,7 @@ export const aiProjects: AIProject[] = [
 
 export const socialLinks: SocialLink[] = [
   { name: 'Email', icon: '📧', url: `mailto:${SITE_CONFIG.email}`, color: 'var(--color-accent-saffron)' },
-  { name: 'GitHub', icon: '🐙', url: SITE_CONFIG.github, color: 'var(--color-accent-cyan)' },
+  { name: 'GitHub', icon: '🐙', url: SITE_CONFIG.github, color: 'var(--color-accent-teal)' },
   { name: 'LinkedIn', icon: '💼', url: SITE_CONFIG.linkedin, color: 'var(--color-accent-gold)' },
 ];
 

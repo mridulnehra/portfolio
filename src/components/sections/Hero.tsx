@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import { motion, MotionValue, useTransform } from 'framer-motion';
+import { motion, MotionValue, useTransform, useMotionValue } from 'framer-motion';
 import { SITE_CONFIG } from '@/lib/constants';
 
 interface HeroProps {
@@ -14,9 +14,9 @@ const tags = ['CSE Student', 'AI Nerd', 'Goes With The Flow'];
 
 export default function Hero({ scrollProgress }: HeroProps) {
   // Fade out scroll indicator early in the cycle
-  const scrollIndicatorOpacity = scrollProgress 
-    ? useTransform(scrollProgress, [0, 0.05], [1, 0])
-    : 1;
+  const fallbackProgress = useMotionValue(0);
+  const effectiveProgress = scrollProgress ?? fallbackProgress;
+  const scrollIndicatorOpacity = useTransform(effectiveProgress, [0, 0.05], [1, 0]);
 
   return (
     <section
@@ -34,11 +34,11 @@ export default function Hero({ scrollProgress }: HeroProps) {
       }}
     >
       {/* Floating paisley decorations */}
-      <svg style={{ position: 'absolute', top: '12%', left: '8%', opacity: 0.12 }} width="60" height="80" viewBox="0 0 60 80">
+      <svg aria-hidden="true" style={{ position: 'absolute', top: '12%', left: '8%', opacity: 0.12 }} width="60" height="80" viewBox="0 0 60 80">
         <path d="M30 5 Q50 20 45 45 Q40 65 30 75 Q20 65 15 45 Q10 20 30 5Z" fill="var(--color-accent-maroon)" />
         <path d="M30 15 Q40 25 38 40 Q35 55 30 60 Q25 55 22 40 Q20 25 30 15Z" fill="var(--color-accent-saffron)" />
       </svg>
-      <svg style={{ position: 'absolute', top: '20%', right: '10%', opacity: 0.1, transform: 'rotate(30deg)' }} width="50" height="65" viewBox="0 0 60 80">
+      <svg aria-hidden="true" style={{ position: 'absolute', top: '20%', right: '10%', opacity: 0.1, transform: 'rotate(30deg)' }} width="50" height="65" viewBox="0 0 60 80">
         <path d="M30 5 Q50 20 45 45 Q40 65 30 75 Q20 65 15 45 Q10 20 30 5Z" fill="var(--color-accent-teal)" />
         <path d="M30 15 Q40 25 38 40 Q35 55 30 60 Q25 55 22 40 Q20 25 30 15Z" fill="var(--color-accent-gold)" />
       </svg>
@@ -141,6 +141,47 @@ export default function Hero({ scrollProgress }: HeroProps) {
             </motion.span>
           ))}
         </div>
+
+        {/* Resume Download Button */}
+        <motion.a
+          href="/resume_new.pdf"
+          target="_blank"
+          rel="noopener noreferrer"
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{
+            delay: 0.5 + heroTitle.length * 0.03 + 1.3,
+            duration: 0.5,
+          }}
+          whileHover={{ scale: 1.05, y: -2 }}
+          whileTap={{ scale: 0.97 }}
+          style={{
+            display: 'inline-flex',
+            alignItems: 'center',
+            gap: '0.4rem',
+            marginTop: '1.5rem',
+            padding: '0.5rem 1.5rem',
+            borderRadius: '99px',
+            border: '2px solid rgba(139, 26, 26, 0.2)',
+            background: 'rgba(139, 26, 26, 0.06)',
+            fontFamily: 'var(--font-body)',
+            fontWeight: 600,
+            fontSize: '0.85rem',
+            color: 'var(--color-accent-maroon)',
+            textDecoration: 'none',
+            cursor: 'pointer',
+            backdropFilter: 'blur(8px)',
+            transition: 'background 0.2s ease',
+          }}
+          onMouseEnter={e => {
+            e.currentTarget.style.background = 'rgba(139, 26, 26, 0.12)';
+          }}
+          onMouseLeave={e => {
+            e.currentTarget.style.background = 'rgba(139, 26, 26, 0.06)';
+          }}
+        >
+          Download Resume ↓
+        </motion.a>
       </motion.div>
 
       {/* Scroll Indicator */}

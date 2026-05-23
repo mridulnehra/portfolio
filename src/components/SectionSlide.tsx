@@ -16,10 +16,10 @@ export default function SectionSlide({ children, scrollProgress, range, id, isFi
   const [start, end] = range;
   const span = end - start;
 
-  // Fade in over first 25% of range, full for middle 50%, fade out over last 25%
+  // Fade in quickly over first 10%, full for middle 80%, fade out over last 10%
   const fadeIn = start;
-  const fadeInDone = start + span * 0.22;
-  const fadeOutStart = end - span * 0.22;
+  const fadeInDone = start + span * 0.10;
+  const fadeOutStart = end - span * 0.10;
   const fadeOut = end;
 
   const opacity = useTransform(

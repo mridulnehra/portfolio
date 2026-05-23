@@ -18,6 +18,15 @@ export default function IntroVideo({ onComplete }: IntroVideoProps) {
   const [loadProgress, setLoadProgress] = useState(0);
   const [isLoaded, setIsLoaded] = useState(false);
   const [isSliding, setIsSliding] = useState(false);
+
+  const handleSkip = useCallback(() => {
+    if (isSliding) return;
+    setIsSliding(true);
+    if (animationRef.current) cancelAnimationFrame(animationRef.current);
+    setTimeout(() => {
+      onComplete();
+    }, SLIDE_DURATION + 100);
+  }, [isSliding, onComplete]);
   const framesRef = useRef<HTMLImageElement[]>([]);
   const animationRef = useRef<number>(0);
 
@@ -226,7 +235,43 @@ export default function IntroVideo({ onComplete }: IntroVideoProps) {
         ref={canvasRef}
         className="intro-canvas"
         style={{ opacity: isLoaded ? 1 : 0 }}
+        aria-label="Intro animation showing the portfolio's Rajasthani theme"
       />
+
+      {/* Skip button */}
+      <button
+        onClick={handleSkip}
+        aria-label="Skip intro animation"
+        style={{
+          position: 'absolute',
+          bottom: 40,
+          right: 40,
+          zIndex: 10,
+          fontFamily: 'var(--font-body)',
+          fontSize: '0.85rem',
+          fontWeight: 600,
+          color: 'var(--color-accent-maroon)',
+          background: 'rgba(255, 248, 240, 0.85)',
+          border: '1.5px solid rgba(139, 26, 26, 0.2)',
+          borderRadius: '99px',
+          padding: '0.5rem 1.25rem',
+          cursor: 'pointer',
+          backdropFilter: 'blur(8px)',
+          WebkitBackdropFilter: 'blur(8px)',
+          transition: 'all 0.2s ease',
+          letterSpacing: '0.05em',
+        }}
+        onMouseEnter={e => {
+          e.currentTarget.style.background = 'rgba(255, 248, 240, 0.95)';
+          e.currentTarget.style.transform = 'scale(1.05)';
+        }}
+        onMouseLeave={e => {
+          e.currentTarget.style.background = 'rgba(255, 248, 240, 0.85)';
+          e.currentTarget.style.transform = 'scale(1)';
+        }}
+      >
+        Skip ▸
+      </button>
     </div>
   );
 }

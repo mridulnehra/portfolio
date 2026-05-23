@@ -1,14 +1,10 @@
 'use client';
 
 import React from 'react';
-import { motion, MotionValue } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { socialLinks, SITE_CONFIG } from '@/lib/constants';
 
-interface ContactProps {
-  scrollProgress?: MotionValue<number>;
-}
-
-export default function Contact({ scrollProgress }: ContactProps) {
+export default function Contact() {
   return (
     <section
       id="contact"
@@ -23,7 +19,7 @@ export default function Contact({ scrollProgress }: ContactProps) {
       }}
     >
       {/* Namaste figure — right */}
-      <svg style={{ position: 'absolute', right: '8%', bottom: '25%', opacity: 0.15 }} width="40" height="80" viewBox="0 0 40 80">
+      <svg aria-hidden="true" style={{ position: 'absolute', right: '8%', bottom: '25%', opacity: 0.15 }} width="40" height="80" viewBox="0 0 40 80">
         {/* Head */}
         <circle cx="20" cy="12" r="8" fill="var(--color-accent-gold)" />
         {/* Turban */}

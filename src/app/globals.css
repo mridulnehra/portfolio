@@ -22,6 +22,7 @@
   --color-accent-maroon: #8B1A1A;
   --color-accent-red: #C41E3A;
   --color-accent-green: #2E7D32;
+  --color-accent-cyan: #0EA5E9;
 
   /* Text Palette — Dark on Light */
   --color-text-primary: #2D1B0E;
@@ -223,6 +224,11 @@ a {
   0% { opacity: 0.3; }
   50% { opacity: 0.6; }
   100% { opacity: 0.3; }
+}
+
+@keyframes twinkle {
+  0%, 100% { opacity: 0.3; }
+  50% { opacity: 1; }
 }
 
 /* ===== SCROLL PROGRESS ===== */

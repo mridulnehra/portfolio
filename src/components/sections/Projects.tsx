@@ -1,14 +1,9 @@
 'use client';
 
-import React from 'react';
-import { motion, MotionValue } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { projects } from '@/lib/constants';
 
-interface ProjectsProps {
-  scrollProgress?: MotionValue<number>;
-}
-
-export default function Projects({ scrollProgress }: ProjectsProps) {
+export default function Projects() {
   return (
     <section
       id="projects"
@@ -18,14 +13,14 @@ export default function Projects({ scrollProgress }: ProjectsProps) {
       }}
     >
       {/* Haveli windows pattern — subtle */}
-      <svg style={{ position: 'absolute', left: 20, top: '12%', opacity: 0.08 }} width="60" height="100" viewBox="0 0 60 100">
+      <svg aria-hidden="true" style={{ position: 'absolute', left: 20, top: '12%', opacity: 0.08 }} width="60" height="100" viewBox="0 0 60 100">
         <path d="M5 100 L5 30 Q5 5 30 5 Q55 5 55 30 L55 100" fill="none" stroke="var(--color-accent-maroon)" strokeWidth="2" />
         <path d="M15 100 L15 35 Q15 15 30 15 Q45 15 45 35 L45 100" fill="none" stroke="var(--color-accent-gold)" strokeWidth="1.5" />
         <line x1="30" y1="15" x2="30" y2="100" stroke="var(--color-accent-maroon)" strokeWidth="1" />
         <line x1="15" y1="60" x2="45" y2="60" stroke="var(--color-accent-maroon)" strokeWidth="1" />
       </svg>
 
-      <svg style={{ position: 'absolute', right: 20, bottom: '15%', opacity: 0.08 }} width="60" height="100" viewBox="0 0 60 100">
+      <svg aria-hidden="true" style={{ position: 'absolute', right: 20, bottom: '15%', opacity: 0.08 }} width="60" height="100" viewBox="0 0 60 100">
         <path d="M5 100 L5 30 Q5 5 30 5 Q55 5 55 30 L55 100" fill="none" stroke="var(--color-accent-maroon)" strokeWidth="2" />
         <path d="M15 100 L15 35 Q15 15 30 15 Q45 15 45 35 L45 100" fill="none" stroke="var(--color-accent-gold)" strokeWidth="1.5" />
         <line x1="30" y1="15" x2="30" y2="100" stroke="var(--color-accent-maroon)" strokeWidth="1" />

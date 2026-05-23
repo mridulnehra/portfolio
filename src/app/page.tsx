@@ -38,7 +38,7 @@ export default function Home() {
       )}
 
       {/* Main Content */}
-      <Navbar />
+      <Navbar scrollProgress={scrollYProgress} />
       
       <div style={{ position: 'relative' }}>
         {/* Fixed background layer for the entire 24hr cycle */}
@@ -51,15 +51,15 @@ export default function Home() {
           </SectionSlide>
           
           <SectionSlide scrollProgress={scrollYProgress} range={[0.14, 0.28]} id="about">
-            <About scrollProgress={scrollYProgress} />
+            <About />
           </SectionSlide>
           
           <SectionSlide scrollProgress={scrollYProgress} range={[0.28, 0.42]} id="skills">
-            <Skills scrollProgress={scrollYProgress} />
+            <Skills />
           </SectionSlide>
           
           <SectionSlide scrollProgress={scrollYProgress} range={[0.42, 0.57]} id="projects">
-            <Projects scrollProgress={scrollYProgress} />
+            <Projects />
           </SectionSlide>
           
           <SectionSlide scrollProgress={scrollYProgress} range={[0.57, 0.71]} id="lab">
@@ -67,11 +67,11 @@ export default function Home() {
           </SectionSlide>
           
           <SectionSlide scrollProgress={scrollYProgress} range={[0.71, 0.85]} id="vision">
-            <Vision scrollProgress={scrollYProgress} />
+            <Vision />
           </SectionSlide>
           
           <SectionSlide scrollProgress={scrollYProgress} range={[0.85, 1.0]} id="contact">
-            <Contact scrollProgress={scrollYProgress} />
+            <Contact />
           </SectionSlide>
         </main>
         

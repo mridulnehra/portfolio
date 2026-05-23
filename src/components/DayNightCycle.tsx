@@ -99,15 +99,15 @@ export default function DayNightCycle({ scrollProgress }: DayNightCycleProps) {
   /* ------------------------------------------------------------------ */
   /*  MOON — rises from the right after sunset                          */
   /* ------------------------------------------------------------------ */
-  const moonRight = useTransform(
+  const moonLeft = useTransform(
     scrollProgress,
-    [0.6, 0.75, 0.9, 1],
-    ['10%', '15%', '20%', '25%'],
+    [0.6, 0.7, 0.8, 0.9, 1],
+    ['110%', '85%', '60%', '35%', '10%'],
   );
   const moonTop = useTransform(
     scrollProgress,
-    [0.6, 0.75, 0.9, 1],
-    ['110%', '50%', '20%', '15%'],
+    [0.6, 0.7, 0.8, 0.9, 1],
+    ['110%', '45%', '15%', '5%', '15%'],
   );
   const moonOpacity = useTransform(
     scrollProgress,
@@ -257,7 +257,7 @@ export default function DayNightCycle({ scrollProgress }: DayNightCycleProps) {
       <motion.div
         style={{
           position: 'absolute',
-          right: moonRight,
+          left: moonLeft,
           top: moonTop,
           opacity: moonOpacity,
           willChange: 'transform',

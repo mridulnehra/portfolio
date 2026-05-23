@@ -60,7 +60,7 @@ export default function RajasthaniBorder() {
         </defs>
         <rect width="100%" height="24" fill="url(#arch-pattern)" />
         {/* Bottom gold line */}
-        <line x1="0" y1="23" x2="1440" y2="23" stroke="#D4A017" strokeWidth="1.5" opacity="0.6" />
+        <line x1="0" y1="23" x2="100%" y2="23" stroke="#D4A017" strokeWidth="1.5" opacity="0.6" />
       </svg>
     </div>
   );
